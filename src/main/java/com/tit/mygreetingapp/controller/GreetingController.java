@@ -40,6 +40,11 @@ public class GreetingController {
         return greetingService.getGreeting(request);
     }
 
+    @GetMapping("/get/{id}")
+    public Greeting getGreetingById(@PathVariable Long id) {
+        return greetingService.findGreetingById(id);
+    }
+
     @PostMapping("/post")
     public Map<String, String> createGreeting(@RequestBody Map<String, String> request) {
         return greetingService.getGreeting(request);
