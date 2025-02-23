@@ -14,12 +14,16 @@ public class GreetingService {
 
         String greetingMessage;
         if (!firstName.isEmpty() && !lastName.isEmpty()) {
+            // Both firstName and lastName are provided
             greetingMessage = "Hello " + firstName + " " + lastName + "!";
         } else if (!firstName.isEmpty()) {
+            // Only firstName is provided
             greetingMessage = "Hello " + firstName + "!";
         } else if (!lastName.isEmpty()) {
+            // Only lastName is provided
             greetingMessage = "Hello " + lastName + "!";
         } else {
+            // Neither firstName nor lastName is provided
             greetingMessage = "Hello World!";
         }
 

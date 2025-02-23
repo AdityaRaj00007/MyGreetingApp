@@ -16,14 +16,14 @@ public class GreetingController {
         this.greetingService = greetingService;
     }
 
-    // Default GET mapping for /greeting
+    // Default GET mapping for greeting
     @GetMapping
     public Map<String, String> defaultGreeting() {
         Map<String, String> response = new HashMap<>();
         response.put("message", "Welcome to the Greeting App!");
         return response;
     }
-
+    // get mapping fot /get
     @GetMapping("/get")
     public Map<String, String> getGreeting(@RequestParam(required = false) String firstName,
                                            @RequestParam(required = false) String lastName) {
