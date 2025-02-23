@@ -1,5 +1,6 @@
 package com.tit.mygreetingapp.controller;
 
+import com.tit.mygreetingapp.entity.Greeting;
 import com.tit.mygreetingapp.service.GreetingService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +17,19 @@ public class GreetingController {
         this.greetingService = greetingService;
     }
 
-    // Default GET mapping for greeting
+    // Default GET mapping for /greeting
     @GetMapping
     public Map<String, String> defaultGreeting() {
         Map<String, String> response = new HashMap<>();
         response.put("message", "Welcome to the Greeting App!");
         return response;
     }
-    // get mapping fot /get
+
+    @PostMapping("/save")
+    public Greeting saveGreeting(@RequestBody Map<String, String> request) {
+        return greetingService.saveGreeting(request.getOrDefault("message", "Hello World!"));
+    }
+
     @GetMapping("/get")
     public Map<String, String> getGreeting(@RequestParam(required = false) String firstName,
                                            @RequestParam(required = false) String lastName) {
@@ -47,7 +53,7 @@ public class GreetingController {
     @DeleteMapping("/delete")
     public Map<String, String> deleteGreeting() {
         Map<String, String> response = new HashMap<>();
-        response.put("message", "DELETE request received.");
+        response.put("message", "DELETE request received");
         return response;
     }
 }
